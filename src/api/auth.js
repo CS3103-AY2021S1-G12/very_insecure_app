@@ -13,9 +13,9 @@ router.use(express.json());
 
 const LEVEL_1_PROMO_CODE = "`2MH}\?TV<@4M;T{&CD?3'YH";
 
-
-
 // Level 1 endpoint
+// Simple GET endpoint that returns a promo code if user is authenticated
+// based on a flag in the base-64 encoded cookie
 router.get('/admin/promo', (req, res) => {
   const cookie = req.cookies['session'];
 
@@ -37,6 +37,7 @@ router.get('/admin/promo', (req, res) => {
 
 
 // Level 2 endpoint
+// Simple login endpoint that returns user info as a JSON object
 router.post('/login', (req, res) => {
   if (!req.body.username || !req.body.password) {
     res.status(400).send("Bad request!");
@@ -57,6 +58,37 @@ router.post('/login', (req, res) => {
     })
     .catch(e => {
        res.status(500).send(`Server error: ${e.message}`);
+    })
+});
+
+// Level 3 endpoint
+// Simple GET endpoint that returns product listings with filtering based on
+// the query parameter 'name'.
+router.get('/products', (req, res) => {
+  const filter = req.query.name;
+
+  let query;
+  if (!filter) {
+    query = "SELECT * FROM products;"
+  } else {
+    query = `SELECT * FROM products WHERE item_name = ${filter};`;
+  }
+
+  pool.query(query)
+    .then(({rows}) => {
+      const data = rows.map(x => {
+        // Only return first 3 columns of query result
+        const truncated = {};
+        truncated[Object.keys(x)[0]] = x[Object.keys(x)[0]];
+        truncated[Object.keys(x)[1]] = x[Object.keys(x)[1]];
+        truncated[Object.keys(x)[2]] = x[Object.keys(x)[2]];
+        return truncated;
+      });
+
+      res.status(200).send(data);
+    })
+    .catch(e => {
+      res.status(500).send(`Server error: ${e.message}`);
     })
 });
 
