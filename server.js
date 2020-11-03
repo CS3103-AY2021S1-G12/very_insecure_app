@@ -1,8 +1,11 @@
 const express = require('express');
-const { Client } = require('pg');
+const { Pool } = require('pg');
 
-const pg = new Client();
-pg.connect();
+const pool = new Pool();
+pool.query('SELECT 1;', (err, res) => {
+    console.log(err, res);
+    pool.end();
+});
 
 const app = express();
 const port = 3000;
