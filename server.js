@@ -27,6 +27,7 @@ app.get('/auth-1/*', (req, res, next) => {
 })
 app.use('/assets', express.static(path.join(__dirname, 'src/assets')));
 app.use('/auth-1', express.static(path.join(__dirname, 'src/auth-1')));
+app.use('/auth-2', express.static(path.join(__dirname, 'src/auth-2')));
 
 
 app.get('*', (req, res) => {
