@@ -7,6 +7,6 @@ COPY package-lock.json .
 
 RUN npm ci
 
-COPY ./src .
+COPY ./src ./src
 COPY server.js .
 ENTRYPOINT [ "node", "server.js" ]
