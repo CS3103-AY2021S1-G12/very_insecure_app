@@ -1,0 +1,23 @@
+{
+  "name": "very_insecure_app",
+  "version": "1.0.0",
+  "description": "A deliberately insecure web application to train in XSS and SQLi vulnerabilities.",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/CS3103-AY2021S1-G12/very_insecure_app.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/CS3103-AY2021S1-G12/very_insecure_app/issues"
+  },
+  "homepage": "https://github.com/CS3103-AY2021S1-G12/very_insecure_app#readme",
+  "dependencies": {
+    "express": "^4.17.1",
+    "pg": "^8.4.2"
+  }
+}
