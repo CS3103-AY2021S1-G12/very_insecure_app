@@ -1,5 +1,4 @@
 const express = require('express');
-const cookieParser = require('cookie-parser');
 
 // DB connections
 const { Pool } = require('pg');
@@ -7,7 +6,6 @@ const pool = new Pool();
 
 // Middleware for routers
 const router = express.Router();
-router.use(cookieParser());
 router.use(express.json());
 
 
@@ -18,20 +16,36 @@ const LEVEL_1_PROMO_CODE = "`2MH}\?TV<@4M;T{&CD?3'YH";
 // based on a flag in the base-64 encoded cookie
 router.get('/admin/promo', (req, res) => {
   const cookie = req.cookies['session'];
-
   if (!cookie) {
     res.status(401).send("Not authorized!");
     return;
   }
 
   const buff = Buffer.from(cookie, 'base64');
-  console.log(buff.toString('ascii'));
   const token = JSON.parse(buff.toString('ascii'));
 
   if (token.isAdmin) {
     res.status(200).send(LEVEL_1_PROMO_CODE);
   } else {
     res.status(401).send("Not authorized!");
+  }
+});
+
+// Level 1 promo code verification endpoint
+router.post('/admin/promo', (req, res) => {
+  if (!req.body.code) {
+    res.status(400).send("Bad request!");
+    return;
+  }
+
+  console.log(req.body);
+
+  const { code } = req.body;
+  if (code === LEVEL_1_PROMO_CODE) {
+    // For actual one maybe send a token/cookie for the next level?
+    res.status(200).send("OK!");
+  } else {
+    res.status(400).send("Bad request!");
   }
 });
 
