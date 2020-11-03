@@ -1,16 +1,20 @@
 const express = require('express');
 const { Client } = require('pg');
 
-const pg = new Client();
-pg.connect();
+// const pg = new Client();
+// pg.connect();
 
 const app = express();
 const port = 3000;
 
-app.get('/', (req, res) => {
-    res.send("Hello world!")
+const authBypassRouter = require('./src/api/auth');
+
+app.use(authBypassRouter);
+
+app.get('*', (req, res) => {
+  res.status(404).send("Not found!");
 });
 
 app.listen(port, () => {
-    console.log(`Listening on port ${port}`)
+  console.log(`Listening on port ${port}`)
 });
