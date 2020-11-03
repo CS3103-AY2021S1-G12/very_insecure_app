@@ -15,9 +15,9 @@ const authBypassRouter = require('./src/api/auth');
 app.use(authBypassRouter);
 
 app.get('*', (req, res) => {
-  res.status(404).send("Not found!");
+    res.status(404).send("Not found!");
 });
 
 app.listen(port, () => {
-  console.log(`Listening on port ${port}`)
+    console.log(`Listening on port ${port}`)
 });
