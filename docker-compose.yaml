@@ -19,6 +19,7 @@ services:
     image: postgres:12
     volumes:
       - app-db:/var/lib/postgresql/data
+      - ./db:/docker-entrypoint-initdb.d
     environment:
       - POSTGRES_PASSWORD=insecure_password
     deploy:
