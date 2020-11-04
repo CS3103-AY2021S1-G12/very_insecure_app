@@ -1,3 +1,4 @@
+let username = 'Guest';
 let done = false;
 const basePath = window.location.href
     .split('/')
@@ -12,24 +13,39 @@ const nextLevel = $('<button/>', {
 });
 
 $(document).ready(() => {
-    fetch(`${basePath}/xss-2/`)
-        .then((res) => {
-            if (res.status === 200) {
-                $('#success').append(nextLevel);
-                done = true;
-            }
-        });
+    $('#username-field').text(username);
+
+    let pickUsernameMode = false;
+    let pickUsernameText = 'Confirm';
+    $('#pick-username').click(() => {
+
+        pickUsernameMode = !pickUsernameMode;
+        const temp = pickUsernameText;
+        pickUsernameText = $('#pick-username').text();
+        $('#pick-username').text(temp);
+
+        if (pickUsernameMode) {
+            const input = $('<textarea/>', {
+                id: "username-input",
+                maxLength: 25,
+                rows: 1
+            });
+            $("#pick-username-container").prepend(input);
+
+        } else {
+            username = $("#username-input").val() || username;
+            $("#username-field").text(username);
+            $("#username-input").remove();
+        }
+    })
 
     $('#submit').click(() => {
-        const inputText = $('#input').val();
+        let inputText = $('#input').val();
         const review = $('<div/>', { class: "review" });
 
-        $('<div/>', {
-            text: 'Guest',
-            class: "username"
-        }).appendTo(review);
+        $(`<div class="username">${username}</div>`).appendTo(review);
 
-        $(`<div class="text">${inputText}<div/>`).appendTo(review);
+        $(`<div class="text">${inputText}</div>`).appendTo(review);
 
         $('#reviews').append(review);
     });
@@ -48,6 +64,15 @@ $(document).ready(() => {
         }
         originalAlert('Good job!');
     }
+
+    fetch(`${basePath}/xss-2/`)
+        .then((res) => {
+            if (res.status === 200) {
+                $('#success').append(nextLevel);
+                done = true;
+            }
+        });
+
 });
 
 function fromConsole() {

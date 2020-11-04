@@ -5,7 +5,7 @@ const cookieParser = require('cookie-parser');
 const router = express.Router();
 router.use(cookieParser());
 
-let levels = ['xss-1', 'xss-2', 'xss-3']
+let levels = ['xss-1', 'xss-2', 'xss-3', 'xss-final']
     .reduce((dict, level) => {
         dict[level] = crypto.randomBytes(12);
         return dict;
