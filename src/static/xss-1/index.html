@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang='en'>
+
+<head>
+    <title>XSS Level 1</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="flex-container">
+        <h1>Reviews</h1>
+        <div class="product-container">
+            <div>
+                <div class="title">Cookies</div>
+                <div class="subtitle">$999</div>
+            </div>
+            <img src="../../assets/cookies.jpg" />
+
+        </div>
+
+        <div id="reviews" class="reviews-container">
+            <div class="review">
+                <div class="username">Cookie Monster:</div>
+                <div class="text">Best cookies ever</div>
+            </div>
+            <div class="review">
+                <div class="username">User 2:</div>
+                <div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, exercitationem
+                    sunt? Aliquam dolorum suscipit doloremque sequi est quibusdam tempore aut ipsum similique, sed
+                    aliquid nemo cumque error in atque dignissimos pariatur hic distinctio dolores. Blanditiis debitis
+                    nesciunt dolor sunt quia sit excepturi ducimus sapiente, aut atque earum repudiandae maiores?
+                    Asperiores.</div>
+            </div>
+            <div class="review">
+                <div class="username">User 3:</div>
+                <div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo amet error a harum
+                    placeat ad et voluptatum unde nesciunt quam!</div>
+            </div>
+            <div class="review">
+                <div class="username">User 4:</div>
+                <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, molestias! Earum quae
+                    tenetur similique minima eveniet excepturi quam hic obcaecati aut voluptates. Labore recusandae
+                    velit modi aperiam quia expedita cum!</div>
+            </div>
+            <div class="review">
+                <div class="username">User 5:</div>
+                <div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dicta modi eius
+                    excepturi nostrum eveniet doloribus placeat. Hic labore modi eos ipsum soluta obcaecati ea.</div>
+            </div>
+            <div class="review">
+                <div class="username">User 6:</div>
+                <div class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet exercitationem illo
+                    modi, minima recusandae molestias repudiandae cupiditate aut magni omnis debitis aliquam repellat
+                    excepturi adipisci, non sequi sunt enim illum!</div>
+            </div>
+        </div>
+
+        <div class="submit-container">
+            <textarea id="input"></textarea><br>
+            <button id="submit">Submit</button><br>
+        </div>
+        <div id="success"></div>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
