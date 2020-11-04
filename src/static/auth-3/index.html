@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Auth Bypass Level 3</title>
+    <link rel="stylesheet" href="./style.css" />
+</head>
+
+<body>
+    <div class="topnav">
+        <a class="active" href="#home">Products</a>
+        <a href="#news">News</a>
+        <a href="#contact">Contact</a>
+        <a href="#about">About</a>
+    </div>
+
+    <form class="search-bar" id="search-bar" method="GET" action="/">
+        <h3>Search</h3>
+        <div>
+            <label for="search">Item:</label>
+            <input name="item_name" type="text" id="item_name" />
+        </div>
+        <div>
+            <input name="submit" type="submit" />
+        </div>
+    </form>
+    <div id="list">
+        <ul id="search-results"></ul>
+    </div>
+
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <script type="text/javascript" src="./index.js"></script>
+</body>
+
+</html>

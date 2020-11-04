@@ -61,17 +61,17 @@ router.post('/login', (req, res) => {
   const { username, password } = req.body;
 
   query = `SELECT id, username FROM users WHERE username = '${username}' AND pw = '${password}'`;
-  
+
   pool.query(query)
-    .then(({rows}) => {
+    .then(({ rows }) => {
       if (rows.length === 0) {
         res.status(400).send("Invalid credentials!");
       }
-      
+
       res.status(200).send(rows[0]);
     })
     .catch(e => {
-       res.status(500).send(`Server error: ${e.message}`);
+      res.status(500).send(`Server error: ${e.message}`);
     })
 });
 
@@ -85,11 +85,11 @@ router.get('/products', (req, res) => {
   if (!filter) {
     query = "SELECT * FROM products;"
   } else {
-    query = `SELECT * FROM products WHERE item_name = ${filter};`;
+    query = `SELECT * FROM products WHERE item_name = '${filter}';`;
   }
 
   pool.query(query)
-    .then(({rows}) => {
+    .then(({ rows }) => {
       const data = rows.map(x => {
         // Only return first 3 columns of query result
         const truncated = {};
