@@ -37,8 +37,6 @@ app.use('/assets', express.static(path.join(__dirname, 'src/assets')));
 app.use('/auth-1', express.static(path.join(__dirname, 'src/static/auth-1')));
 app.use('/auth-2', express.static(path.join(__dirname, 'src/static/auth-2')));
 
-console.log(app._router);
-
 app.get('*', (req, res) => {
     res.status(404).send("Not found!");
 });
