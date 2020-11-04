@@ -1,4 +1,8 @@
-const loginUrl = "http://localhost:3000/login";
+const basePath = window.location.href
+  .split('/')
+  .slice(0, -2)
+  .join('/');
+const loginUrl = `${basePath}/login`;
 
 let isLoggedIn = false;
 

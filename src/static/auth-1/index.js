@@ -1,4 +1,8 @@
-const promoUrl = "http://localhost:3000/admin/promo";
+const basePath = window.location.href
+  .split('/')
+  .slice(0, -2)
+  .join('/');
+const promoUrl = `${basePath}/admin/promo`;
 
 let promo;
 
