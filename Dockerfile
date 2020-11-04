@@ -9,4 +9,6 @@ RUN npm ci
 
 COPY ./src ./src
 COPY server.js .
-ENTRYPOINT [ "node", "server.js" ]
+
+RUN npm run build
+ENTRYPOINT [ "npm", "run", "start" ]

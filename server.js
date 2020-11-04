@@ -19,7 +19,7 @@ const staticDir = './src/static';
 const levelsRouter = require('./src/api/levelSystem');
 app.use('/levels', levelsRouter);
 
-const staticRouter = serveStatic(staticDir);
+const staticRouter = serveStatic(path.join(__dirname, staticDir));
 app.use('/levels', staticRouter);
 
 app.use(cors());
