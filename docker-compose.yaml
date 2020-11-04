@@ -12,7 +12,9 @@ services:
     ports:
       - 80:3000
     depends_on:
-      - db
+      db:
+        condition: service_healthy
+
   db:
     image: postgres:12
     volumes:
@@ -22,6 +24,11 @@ services:
     deploy:
       restart_policy:
         condition: on-failure
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
 
 volumes:
   app-db:
