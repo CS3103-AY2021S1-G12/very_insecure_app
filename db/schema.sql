@@ -9,6 +9,7 @@ CREATE TABLE IF NOT EXISTS users (
 INSERT INTO users(id, username, pw) VALUES (1, 'admin', 'welove3103');
 INSERT INTO users(id, username, pw) VALUES (2, 'bob', 'qwerty');
 INSERT INTO users(id, username, pw) VALUES (3, 'charlie', 'password');
+INSERT INTO users(id, username, pw) VALUES (4, 'guest', 'guest');
 
 -- SCHEMA FOR E-COMMERCE ITEM
 CREATE TABLE IF NOT EXISTS products (
