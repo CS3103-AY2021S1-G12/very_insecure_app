@@ -1,38 +1,40 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <title>Auth Bypass Level 1</title>
-    <link rel="stylesheet" href="./style.css" />
-  </head>
 
-  <body>
-    <form class="login-form" id="login-form">
-      <h1>Login</h1>
-      <div>
-        <label for="username">Username:</label>
-        <input name="username" type="text" id="username" />
-      </div>
-      <div>
-        <label for="password">Password:</label>
-        <input name="password" type="password" id="password" />
-      </div>
-      <div>
-        All guests can log in with the username "guest" and password "guest".
-      </div>
-      <div>
-        <input name="submit" type="submit" />
-      </div>
-    </form>
+<head>
+  <title>Auth Bypass Level 2</title>
+  <link rel="stylesheet" href="./style.css" />
+</head>
 
-    <div class="profile-container">
-      <h2>Profile:</h2>
-      <div id="message">Not logged in!</div>
-      <div id="id"></div>
-      <div id="profile"></div>
-      <button id="logout">Log out</button>
+<body>
+  <form class="login-form" id="login-form">
+    <h1>Login</h1>
+    <div>
+      <label for="username">Username:</label>
+      <input name="username" type="text" id="username" />
     </div>
+    <div>
+      <label for="password">Password:</label>
+      <input name="password" type="password" id="password" />
+    </div>
+    <div>
+      All guests can log in with the username "guest" and password "guest".
+    </div>
+    <div>
+      <input name="submit" type="submit" />
+    </div>
+  </form>
 
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <script type="text/javascript" src="./index.js"></script>
-  </body>
+  <div class="profile-container">
+    <h2>Profile:</h2>
+    <div id="message">Not logged in!</div>
+    <div id="id"></div>
+    <div id="profile"></div>
+    <button id="logout">Log out</button>
+  </div>
+
+  <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+  <script type="text/javascript" src="./index.js"></script>
+</body>
+
 </html>
