@@ -13,7 +13,6 @@ let levels = ['xss-1', 'xss-2', 'xss-3']
 
 let prevLevel;
 for (const [path, secret] of Object.entries(levels)) {
-    console.log({ path });
     if (prevLevel) {
         router.get(`/${path}`, ((prev) => (req, res, next) => {
             const winCookie = req.cookies[prev];
