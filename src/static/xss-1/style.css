@@ -9,18 +9,22 @@ html, body {
 
 h1 {
     padding: 10px;
-}
-
-.flex-container {
-    display: flex;
-    align-items: flex-start;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 1.3rem;
 }
 
 .profile-container {
-    margin-left: auto;
-    margin: 5px;
-    padding: 5px;
-    width: 10vw;
+    padding: 20px;
+    position: relative;
+    border-bottom: 1px solid #eaeaea;
+    width: calc(100%);
+    margin: 0;
+    display: flex;
+    flex: 1;
+    flex-direction: row;
+    position: relative;
+    justify-content: space-between;
 }
 
 .username {
@@ -29,66 +33,33 @@ h1 {
 }
 
 .reviews-container {
-    flex-grow: 5;
     
     display: flex;
     flex-direction: column;
     justify-content: center;
-    align-items: center;
-
-    padding-bottom: 100px;
+    align-items: flex-start;
+    padding: 40px 40px 100px 40px;
 }
 
 .product-container {
-    width: 50vw;
     margin: 10px;
-    padding: 2em;
-    box-shadow: 2px 2px 6px #888888;
 
-    display: flex;
-    flex-direction: row;
-    align-items: center;
-    justify-content: space-between;
-}
-
-.product-container > img {
-    max-width: 180px;
-    max-height: 180px;
-}
-
-.title {
-    font-size: 1.8em;
-    font-weight: bold;
-
-    margin: 1em 0;
-}
-
-.subtitle {
-    font-size: 1.2em;
-}
-
-.reviews-container {
     display: flex;
     flex-direction: column;
 }
 
+.product-container > img {
+    max-width: 300px;
+    max-height: 300px;
+}
+
+
 .review {
-    border-left: gray;
-    border-left-width: 2px;
-    border-left-style: solid;
     background-color: #F4F7F8;
 
-    width: 40vw;
-    margin: 10px;
-    padding: 5px;
-}
-
-.submit-container {
-    width: 40vw;
-    margin: 20px;
-}
-
-.submit-container #input {
     width: 100%;
-    min-height: 4em;
+    margin: 20px 0;
+    padding: 30px;
+    border-radius: 20px;
 }
+

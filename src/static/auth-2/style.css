@@ -27,32 +27,7 @@ html, body {
   width: 280px;
 }
 
-.login-form >:nth-last-child(2) {
-  margin: 20px 0 0 0;
-  font-size: 0.95em;
-  padding: 0 1em;
-  text-align: center;
-}
 
-.login-form >:last-child {
-  flex-direction: row-reverse;
-  margin: 24px 0;
-}
-
-.profile-container {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-}
-
-.profile-container h2 {
-  margin: 22px;
-}
-
-.profile-container div {
-  margin: 4px;
-}
 
 #id, #profile {
   display: none;

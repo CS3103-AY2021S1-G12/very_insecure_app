@@ -1,3 +1,7 @@
+
+import $ from 'jquery'
+
+
 const basePath = window.location.href
     .split('/')
     .slice(0, -2)

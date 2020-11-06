@@ -19,9 +19,11 @@ background-color: #ddd;
 color: black;
 }
 
-
+.search-bar {
+    padding: 40px;
+}
 .topnav a.active {
-background-color: #4CAF50;
+background-color: teal;
 color: white;
 }
 
@@ -43,43 +45,6 @@ justify-content: center;
 align-items: center;
 }
 
-.login-form h1 {
-margin: 22px;
-}
-
-.login-form div {
-margin: 6px 0;
-display: flex;
-justify-content: space-between;
-width: 280px;
-}
-
-.login-form >:nth-last-child(2) {
-margin: 20px 0 0 0;
-font-size: 0.95em;
-padding: 0 1em;
-text-align: center;
-}
-
-.login-form >:last-child {
-flex-direction: row-reverse;
-margin: 24px 0;
-}
-
-.profile-container {
-display: flex;
-flex-direction: column;
-justify-content: center;
-align-items: center;
-}
-
-.profile-container h2 {
-margin: 22px;
-}
-
-.profile-container div {
-margin: 4px;
-}
 
 #id, #profile {
 display: none;
