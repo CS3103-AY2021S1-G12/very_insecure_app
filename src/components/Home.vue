@@ -390,10 +390,7 @@ require('../static/auth-1/style.css')
 require('../static/auth-2/style.css')
 require('../static/auth-3/style.css')
 
-const basePath = window.location.href
-	.split('/')
-	.slice(0, -2)
-	.join('/');
+const basePath = 'http://localhost:3000';
 const promoUrl = `${basePath}/admin/promo`;
 const loginUrl = `${basePath}/login`;
 let a = {
