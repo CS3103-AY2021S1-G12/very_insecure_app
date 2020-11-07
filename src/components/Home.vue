@@ -408,9 +408,9 @@ let a = {
 	},
   data: function () {
     return {
-      selected: 2,
-      sub_selected: 3,
-      main_page: 2,
+      selected: 1,
+      sub_selected: 1,
+      main_page: 1,
       showAlert: false,
 			xss_points: 0,
 			auth_points: 0,
