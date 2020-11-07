@@ -304,7 +304,7 @@
 							<div class="cart-toolbar">
 								<div>
 									<div>Promo code (only available for admins):</div>
-									<div id="promo-code">NIL</div>
+									<div id="promo-code" class="subtitle">NIL</div>
 								</div>
 								<div class="cart-btn-container">
 									<button class="def-button" id="checkout-btn" @click="checkout()">Check out</button>
@@ -354,14 +354,19 @@
 						</div>
 
 						<form class="search-bar" id="search-bar" method="GET" action="/">
-								<h3>Search</h3>
 								<div style="display: flex;">
-										<input name="item_name" class="special" type="text" id="item_name" />
-										<input name="submit" type="submit" class="def-button" style="max-width: 120px; margin-left: 1rem;" />
+										<input name="item_name" class="special" type="text" id="item_name" style="margin: 0" />
+										<div @click="search()" class="def-button" style="max-width: 120px; margin-left: 1rem; display: flex; justify-content: center; align-items: center;">Search</div>
 								</div>
 							<div id="list" style="margin-top: 40px; padding: 0px;">
 									<ul id="search-results">
+										
 									</ul>
+							</div>
+
+							<div style="display: flex;">
+								<input id="promo_code_3" placeholder="Promo Code" type="text" style="margin: 0; width: 200px;" />
+								<div @click="applypromo()" class="def-button" style="max-width: 150px; margin-left: 1rem; display: flex; justify-content: center; align-items: center;">Apply Promo</div>
 							</div>
 						</form>
 
@@ -390,9 +395,11 @@ require('../static/auth-1/style.css')
 require('../static/auth-2/style.css')
 require('../static/auth-3/style.css')
 
-const basePath = 'http://localhost:3000';
+const basePath = 'http://localhost';
 const promoUrl = `${basePath}/admin/promo`;
 const loginUrl = `${basePath}/login`;
+const productUrl = `${basePath}/products`;
+const successText = "Good job!"
 let a = {
   name: 'Home',
   created: function () {
@@ -401,9 +408,9 @@ let a = {
 	},
   data: function () {
     return {
-      selected: 1,
-      sub_selected: 1,
-      main_page: 1,
+      selected: 2,
+      sub_selected: 3,
+      main_page: 2,
       showAlert: false,
 			xss_points: 0,
 			auth_points: 0,
@@ -426,6 +433,52 @@ let a = {
 		}
 	},
 	methods: {
+		search: function() {
+			const itemName = $('#item_name').val();
+    const searchUrl = `${productUrl}?name=${itemName}`
+    fetch(searchUrl, {
+        method: 'get',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+    })
+        .then(response => {
+            if (response.status === 200) {
+                return response.json()
+                    .then(user => [response.status, user]);
+            } else {
+                return response.text()
+                    .then(message => [response.status, message]);
+            }
+        })
+        .then(([status, result]) => {
+            if (status === 400) {
+                alert("Invalid credentials provided!");
+            } else if (status === 500) {
+                alert(`Server responded with error: ${result}`);
+            } else {
+                $(function () {
+                    var data = [];
+
+                    $(result).map(function (i, item) {
+                        data.push('<li>' + "Item:" + item.item_name + " selling at price $" + parseFloat(item.price).toFixed(2) + '</li>');
+                    });
+                    $('#search-results').empty().append(data);
+                })
+            }
+        })
+		},
+		applypromo: function () {
+			const secret = $('#promo_code_3').val();
+			if (secret === "3103ISTHEBEST") {
+                alert(successText);
+				this.updatex('auth', 3);
+			} else {
+                alert("Invalid promo code provided!");
+			}
+
+		},
 		runSubmit: function(i) {
 
 			const originalAlert = window.alert;
@@ -436,7 +489,7 @@ let a = {
 					}
 
 					fetch(`${window.location.href}\x77\x69\x6e\x63\x6f\x6e\x64\x69\x74\x69\x6f\x6e`);
-					originalAlert('Good job!');
+					originalAlert(successText);
 					this.updatex('xss', i);
 			}
 			if (i == 2) {
@@ -540,7 +593,7 @@ let a = {
 						}
 					}).then(response => {
 						if (response.status === 200) {
-							alert("Congratulations!!!");
+							alert(successText);
 							this.updatex('auth', 1);
 						} else {
 							alert("Your promo code appears to be invalid!");
@@ -589,13 +642,8 @@ let a = {
 						} else if (status === 500) {
 							alert(`Server responded with error: ${result}`);
 						} else {
-							isLoggedIn = true;
-							$('#id').html(`Id: ${result.id}`);
-							$('#profile').html(`Username: ${result.username}`);
-							$('#id').css('display', 'block');
-							$('#profile').css('display', 'block');
-							$('#logout').css('display', 'block');
-							$('#message').css('display', 'none');
+							alert(successText);
+							this.updatex('auth', 2);
 						}
 					})
 	}, 
