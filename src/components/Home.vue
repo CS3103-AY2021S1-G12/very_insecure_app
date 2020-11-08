@@ -130,6 +130,8 @@
 				<br/><br/>
 				Nonetheless, you were challenged by your friend trigger a Javascript alert() call without the use of the console.
 				<br/><br/>
+				(Note that after each level, the website increases their defences which you will need increasingly complex XXS techniques to bypass)
+				<br/><br/>
 			</template>
 			<template v-if="selected === 2 && sub_selected == 1">
 				Oh my! Those cookies are way more expensive than you thought they would be!
