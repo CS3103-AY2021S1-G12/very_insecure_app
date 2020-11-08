@@ -5,8 +5,8 @@
   "main": "server.js",
   "scripts": {
     "dev": "nodemon server.js",
-    "build": "mkdir -p build/src && cp -R src server.js build && javascript-obfuscator src/static --output build/src/static --self-defending true",
-    "start": "node build/server.js",
+    "build": "vue-cli-service build && javascript-obfuscator dist/js/app.*.js --output dist/js --self-defending true",
+    "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "fe-serve": "vue-cli-service serve",
     "fe-build": "vue-cli-service build",

@@ -395,12 +395,13 @@ require('../static/auth-1/style.css')
 require('../static/auth-2/style.css')
 require('../static/auth-3/style.css')
 
-const basePath = 'http://localhost';
+const basePath = window.location.origin;
 const promoUrl = `${basePath}/admin/promo`;
 const loginUrl = `${basePath}/login`;
 const productUrl = `${basePath}/products`;
 const successText = "Good job!"
 const originalAlert = window.alert;
+let promo;
 let a = {
   name: 'Home',
   created: function () {
@@ -577,7 +578,6 @@ let a = {
 
 		checkout: function ()  {
 
-				let promo;
 				if (!promo) {
 					originalAlert("You have not gotten the promo code!")
 				} else {
