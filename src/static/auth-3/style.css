@@ -5,53 +5,62 @@
   
   
 .topnav a {
-float: left;
-color: #f2f2f2;
-text-align: center;
-padding: 14px 16px;
-text-decoration: none;
-font-size: 17px;
+    float: left;
+    color: #f2f2f2;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-size: 17px;
 }
   
 
 .topnav a:hover {
-background-color: #ddd;
-color: black;
+    background-color: #ddd;
+    color: black;
 }
 
 .search-bar {
     padding: 40px;
 }
 .topnav a.active {
-background-color: teal;
-color: white;
+    background-color: teal;
+    color: white;
 }
 
 * {
-box-sizing: border-box;
-margin: 0;
+    box-sizing: border-box;
+    margin: 0;
 }
 
 html, body {
-height: 100%;
+    height: 100%;
 }
 
 
 .login-form {
-display: flex;
-flex-direction: column;
+    display: flex;
+    flex-direction: column;
 
-justify-content: center;
-align-items: center;
+    justify-content: center;
+    align-items: center;
 }
 
 
 #id, #profile {
-display: none;
-margin: 4px;
+    display: none;
+    margin: 4px;
 }
 
 #logout {
-display: none;
-margin: 22px;
+    display: none;
+    margin: 22px;
+}
+
+.search-result {
+    background-color: #F4F7F8;
+
+    width: 100%;
+    margin: 1rem 0;
+    padding: 1rem;
+    border-radius: 5px;
 }

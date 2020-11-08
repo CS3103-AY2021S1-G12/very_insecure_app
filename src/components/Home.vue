@@ -249,8 +249,6 @@
 						</div>
 					</div>
           <div v-if="sub_selected === 2">
-
-
 						<div class="profile-container">
 							<div>
 								<h2>Profile:</h2>
@@ -294,7 +292,7 @@
 										<div @click="search()" class="def-button" style="max-width: 120px; margin-left: 1rem; display: flex; justify-content: center; align-items: center;">Search</div>
 								</div>
 							<div id="list" style="margin-top: 40px; padding: 0px;">
-									<ul id="search-results">
+									<ul id="search-results" style="list-style-type:none;">
 										
 									</ul>
 							</div>
@@ -372,14 +370,14 @@ let a = {
 	methods: {
 		search: function() {
 			const itemName = $('#item_name').val();
-    const searchUrl = `${productUrl}?name=${itemName}`
-    fetch(searchUrl, {
-        method: 'get',
-        headers: {
-            'Accept': 'application/json',
-            'Content-Type': 'application/json'
-        },
-    })
+            const searchUrl = `${productUrl}?name=${itemName}`
+            fetch(searchUrl, {
+                method: 'get',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+        })
         .then(response => {
             if (response.status === 200) {
                 return response.json()
@@ -394,12 +392,16 @@ let a = {
                 originalAlert("Invalid credentials provided!");
             } else if (status === 500) {
                 originalAlert(`Server responded with error: ${result}`);
-            } else {
+            } else if (status === 200) {
                 $(function () {
-                    var data = [];
+                    const data = [];
 
                     $(result).map(function (i, item) {
-                        data.push('<li>' + "Item:" + item.item_name + " selling at price $" + parseFloat(item.price).toFixed(2) + '</li>');
+                        const li = $('<li/>', {
+                            class: "search-result",
+                            text: `${item.item_name} selling at price $${parseFloat(item.price).toFixed(2)}`
+                        })
+                        data.push(li);
                     });
                     $('#search-results').empty().append(data);
                 })
