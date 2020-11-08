@@ -172,7 +172,7 @@
                 <button @click="toggleHint(1)">Toggle hint</button>
                 <template v-if="hint[1]">
                     <div class="hint">
-                        How about leaving a review before you proceed?
+                        A picture speaks a thousand words
                     </div>
                 </template>
             </template>
@@ -180,7 +180,7 @@
                 <button @click="toggleHint(2)">Toggle hint</button>
                 <template v-if="hint[2]">
                     <div class="hint">
-                        How about leaving a review before you proceed?
+                        Think outside the box!
                     </div>
                 </template>
             </template>
