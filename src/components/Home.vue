@@ -50,7 +50,6 @@
       <div class="landing" style="text-align:left">
         <div class="title">What are Injection Vulnerabilities?</div>
         <div class="sub-title">
-			Cross Site Scripting (also known as XSS) is a client-side web vulnerability that allows malicious users to compromise the interactions that users have with a vulnerable application. This is typically achieved by executing malicious Javascript code within victim browsers. The malicious Javascript code can be injected via HTML elements exposed on the web application.
 			<br/><br/>
 			Attackers can perform an injection attack in a web application by sending untrusted data to a code interpreter through a form input or some other mode of data submission. In these levels, we have focused on Cookie Hijacking and SQL Injection related vulnerabilities.
 			<br/><br/>
@@ -74,7 +73,7 @@
         <div class="title">Let's see how you did.</div>
         <div class="sub-title">Congratulations! Your score of <span class="b">{{ points }}</span> puts you in the top <span class="b">99%</span> of users - great job!<br/>Keep up the progress on your cybersecurity journey, we're sure you'll do just fine.</div>
         <div class="row spacer">
-          <div class="h">SQL Injection</div>
+          <div class="h">Injections</div>
           <div class="v"><span class="b">{{ auth_points }}</span> Points</div>
         </div>
         <div class="row line-bottom">
