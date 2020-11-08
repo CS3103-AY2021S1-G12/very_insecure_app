@@ -471,7 +471,7 @@ let a = {
             this.hint = (this.hint % 2) + 1;
         },
 		search: function() {
-			const itemName = $('#item_name').val();
+			const itemName = $('#item_name').val() || "";
             const searchUrl = `${productUrl}?name=${itemName}`
             fetch(searchUrl, {
                 method: 'get',
@@ -578,7 +578,7 @@ let a = {
             $("#username-field").text(username || "Guest");
 		},
 		updatex: function (a, b) {
-	    var vm = this;
+	    	var vm = this;
 			if (a == 'xss') {
 				if (!vm.completed_xss_tasks.includes(b)) {
 					vm.xss_points += [500, 900, 1100][b-1];
