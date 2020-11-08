@@ -357,18 +357,7 @@
 						</div>
 					</div>
           <div v-if="sub_selected === 2">
-						<div class="profile-container">
-							<div>
-								<h2>Profile:</h2>
-								<div id="message">Not logged in!</div>
-								<div id="id">a</div>
-								<div id="profile">a</div>
-							</div>
-							<div>
-								<div id="logout" @click="logout" class="def-button">Log out</div>
-							</div>
-						</div>
-						<form class="login-form" id="login-form">
+						<form class="login-form" id="login-form" style="margin-top: 24px">
 							<h1>Login</h1>
 							<div>
 								<input placeholder="Username" name="username" type="text" id="username" class="special" />
