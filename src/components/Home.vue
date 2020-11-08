@@ -25,6 +25,7 @@
       <div class="landing" style="text-align:left">
         <div class="title">What is Cross Site Scripting?</div>
         <div class="sub-title">
+			<br/><br/>
 			Cross Site Scripting (also known as XSS) is a client-side web vulnerability that allows malicious users to compromise the interactions that users have with a vulnerable application. This is typically achieved by executing malicious Javascript code within victim browsers. The malicious Javascript code can be injected via HTML elements exposed on the web application.
 			<br/><br/>
 			<strong>What are several types of XSS?</strong><br/>
@@ -89,21 +90,21 @@
     </div>
     <div class="main" v-if="main_page == 2">
       <div class="sidebar">
+        <div class="chat" @click="selected = 2" :class="{'selected': selected === 2}">
+          <div class="meal">{{ auth_pts }}</div>
+          <div class="name">Injection Attacks</div>
+          <span class="progress">{{ auth_points }}</span><span class="writeup"> / 2500 Points</span>
+        </div>
         <div class="chat" @click="selected = 1" :class="{'selected': selected === 1}">
           <div class="meal">{{ xss_pts }}</div>
           <div class="name">XSS Attacks</div>
           <span class="progress">{{ xss_points }}</span><span class="writeup"> / 2500 Points</span>
         </div>
-        <div class="chat" @click="selected = 2" :class="{'selected': selected === 2}">
-          <div class="meal">{{ auth_pts }}</div>
-          <div class="name">Authentication Attacks</div>
-          <span class="progress">{{ auth_points }}</span><span class="writeup"> / 2500 Points</span>
-        </div>
         <div class="copyright" @click="reload()">Want to try again? Start over</div>
       </div>
       <div class="main-wrapper">
         <div class="progress-bar">
-          <div class="name">{{ (selected == 1) ? "XSS Attacks" : "Authentication Attacks"}} (Part {{ sub_selected }})</div>
+          <div class="name">{{ (selected == 1) ? "XSS Attacks" : "Injection Attacks"}} (Part {{ sub_selected }})</div>
           <div class="pb-wrapper">
             <div class="points">
               <span class="progress">{{ (selected == 1) ?  xss_points : auth_points }}</span><span class="writeup"> Points</span>
@@ -119,7 +120,7 @@
 							</template>
             </div>
           </div>
-		  <div class="writeup-text" style="margin-top:20px">
+		  <dIV class="writeup-text" style="margin-top:20px">
 			<template v-if="selected === 1">
 				You have become somewhat of a celebrity among your computer club friends for your recent exploits.
 				<br/><br/>
@@ -129,9 +130,6 @@
 				<br/><br/>
 				Nonetheless, you were challenged by your friend trigger a Javascript alert() call without the use of the console.
 				<br/><br/>
-				Hint:
-				<br/>
-				How about leaving a review before you proceed?
 			</template>
 			<template v-if="selected === 2 && sub_selected == 1">
 				Oh my! Those cookies are way more expensive than you thought they would be!
@@ -143,10 +141,6 @@
 				The website has however, made it very convenient for its admin users to participate in the promotion. All they have have to do is log in with their admin accounts, press the "Get Promo" button before they checkout their cart and voila!
 				<br/><br/>
 				Now, if only there is a way to get around this...
-				<br/><br/>
-				Hint:
-				<br/>
-				On many websites, login sessions are stored as web cookies.
 			</template>
 			<template v-if="selected === 2 && sub_selected == 2">
 				After savoring those delicious cookies at 50% off, you now crave more of those juicy admin privileges.
@@ -154,10 +148,6 @@
 				If only there was a way for you to obtain an admin account, or at least, trick the website into thinking that you have an admin account...
 				<br/><br/>
 				Just think of all the delightful things you can buy with those year round admin promos!
-				<br/><br/>
-				Hint:
-				<br/>
-				It was recently leaked that the website uses PostgreSQL to store their user information.
 			</template>
 			<template v-if="selected === 2 && sub_selected == 3">
 				It appears that the website has come up with a brand new marketing ploy where exclusive promo codes are given to users to receive a 80% discount on their purchases.
@@ -165,12 +155,31 @@
 				Feeling excited by your recent successes, you revel in the thought of being able to exploit the website once again.
 				<br/><br/>
 				Are you really still doing it for the discounts?
-				<br/><br/>
-				Hint:
-				<br/>
-				The promo code must be stored in their database somewhere!
 			</template>
 		  </div>
+          <div class="hint-container">
+            <button @click="toggleHint()">Toggle hint</button>
+            <template v-if="hint === 1 && selected === 1">
+                <div class="hint">
+                    How about leaving a review before you proceed?
+                </div>
+            </template>
+            <template v-if="hint === 1 && selected === 2 && sub_selected === 1">
+                <div class="hint">
+                    On many websites, login sessions are stored as web cookies.
+                </div>
+            </template>
+            <template v-if="hint === 1 && selected === 2 && sub_selected === 2">
+                <div class="hint">
+                    It was recently leaked that the website uses PostgreSQL to store their user information.
+                </div>
+            </template>
+            <template v-if="hint === 1 && selected === 2 && sub_selected === 3">
+                <div class="hint">
+                    The promo code must be stored in their database somewhere!
+                </div>
+            </template>
+          </div>
         </div>
         <div class="content" v-if="selected === 1">
 					<div class="profile-container">
@@ -432,8 +441,9 @@ let a = {
 	},
   data: function () {
     return {
-      selected: 1,
+      selected: 2,
       sub_selected: 1,
+      hint: 0,
       main_page: 1,
       showAlert: false,
 			xss_points: 0,
@@ -457,6 +467,9 @@ let a = {
 		}
 	},
 	methods: {
+        toggleHint: function() {
+            this.hint = (this.hint % 2) + 1;
+        },
 		search: function() {
 			const itemName = $('#item_name').val();
             const searchUrl = `${productUrl}?name=${itemName}`
@@ -975,6 +988,10 @@ hr {
 }
 .writeup-text {
   font-size: 0.9rem;
+  padding: 2rem;
+  background-color: #F4F7F8;
+  border-radius: 2px;
+  font-weight: 580;
 }
 .progress-bar {
   padding: 20px;
@@ -1076,5 +1093,28 @@ hr {
 .b {
   font-weight: bold;
   color: teal;
+}
+.hint-container {
+    display: flex;
+    padding: 22px;
+}
+.hint-container .hint {
+  font-size: 0.9rem;
+  align-items: center;
+  line-height: 44px;
+}
+.hint-container button {
+    padding: 1rem 1.5rem;
+	background-color: teal;
+	color: white;
+	display: inline-block;
+    border-radius: 2px;
+	font-size: 0.7rem;
+	letter-spacing: 1px;
+	text-transform: uppercase;
+	border-radius: 5px;
+	border: 0;
+	cursor: pointer;
+    margin-right: 1.5rem;
 }
 </style>
