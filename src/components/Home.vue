@@ -43,12 +43,12 @@
     <div class="main" v-if="main_page == 2">
       <div class="sidebar">
         <div class="chat" @click="selected = 1" :class="{'selected': selected === 1}">
-          <div class="meal">{{ (selected == 1) ? xss_pts : auth_pts }}</div>
+          <div class="meal">{{ xss_pts }}</div>
           <div class="name">XSS Attacks</div>
           <span class="progress">{{ xss_points }}</span><span class="writeup"> / 2500 Points</span>
         </div>
         <div class="chat" @click="selected = 2" :class="{'selected': selected === 2}">
-          <div class="meal">{{ (selected == 1) ? xss_pts : auth_pts }}</div>
+          <div class="meal">{{ auth_pts }}</div>
           <div class="name">Authentication Attacks</div>
           <span class="progress">{{ auth_points }}</span><span class="writeup"> / 2500 Points</span>
         </div>
@@ -400,6 +400,7 @@ const promoUrl = `${basePath}/admin/promo`;
 const loginUrl = `${basePath}/login`;
 const productUrl = `${basePath}/products`;
 const successText = "Good job!"
+const originalAlert = window.alert;
 let a = {
   name: 'Home',
   created: function () {
@@ -454,9 +455,9 @@ let a = {
         })
         .then(([status, result]) => {
             if (status === 400) {
-                alert("Invalid credentials provided!");
+                originalAlert("Invalid credentials provided!");
             } else if (status === 500) {
-                alert(`Server responded with error: ${result}`);
+                originalAlert(`Server responded with error: ${result}`);
             } else {
                 $(function () {
                     var data = [];
@@ -472,16 +473,15 @@ let a = {
 		applypromo: function () {
 			const secret = $('#promo_code_3').val();
 			if (secret === "3103ISTHEBEST") {
-                alert(successText);
+                originalAlert(successText);
 				this.updatex('auth', 3);
 			} else {
-                alert("Invalid promo code provided!");
+                originalAlert("Invalid promo code provided!");
 			}
 
 		},
 		runSubmit: function(i) {
 
-			const originalAlert = window.alert;
 			window.alert = (msg) => {
 					if (fromConsole()) {
 							originalAlert('Nice try! Don\'t use the console :)');
@@ -570,7 +570,7 @@ let a = {
 						$('#promo-code').html(text);
 						promo = text;
 					} else {
-						alert(`Server responded with: ${text}`);
+						originalAlert(`Server responded with: ${text}`);
 					}
 				})
 		}, 
@@ -579,7 +579,7 @@ let a = {
 
 				let promo;
 				if (!promo) {
-					alert("You have not gotten the promo code!")
+					originalAlert("You have not gotten the promo code!")
 				} else {
 					const body = JSON.stringify({
 						code: promo
@@ -593,10 +593,10 @@ let a = {
 						}
 					}).then(response => {
 						if (response.status === 200) {
-							alert(successText);
+							originalAlert(successText);
 							this.updatex('auth', 1);
 						} else {
-							alert("Your promo code appears to be invalid!");
+							originalAlert("Your promo code appears to be invalid!");
 						}
 					})
 				}
@@ -607,7 +607,7 @@ let a = {
 
 			login : function () {
 				if (this.isLoggedIn) {
-					alert("Already logged in!");
+					originalAlert("Already logged in!");
 					return;
 				}
 
@@ -638,11 +638,11 @@ let a = {
 					})
 					.then(([status, result]) => {
 						if (status === 400) {
-							alert("Invalid credentials provided!");
+							originalAlert("Invalid credentials provided!");
 						} else if (status === 500) {
-							alert(`Server responded with error: ${result}`);
+							originalAlert(`Server responded with error: ${result}`);
 						} else {
-							alert(successText);
+							originalAlert(successText);
 							this.updatex('auth', 2);
 						}
 					})
