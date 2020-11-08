@@ -104,39 +104,20 @@
 														<div class="text">Best cookies ever</div>
 												</div>
 												<div class="review">
-														<div class="username">User 2:</div>
-														<div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, exercitationem
-																sunt? Aliquam dolorum suscipit doloremque sequi est quibusdam tempore aut ipsum similique, sed
-																aliquid nemo cumque error in atque dignissimos pariatur hic distinctio dolores. Blanditiis
-																debitis
-																nesciunt dolor sunt quia sit excepturi ducimus sapiente, aut atque earum repudiandae maiores?
-																Asperiores.</div>
+														<div class="username">Elsie-Rose Cooley:</div>
+														<div class="text">This Cookies works excessively well. It mortally improves my golf by a lot.</div>
 												</div>
 												<div class="review">
-														<div class="username">User 3:</div>
-														<div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo amet error a harum
-																placeat ad et voluptatum unde nesciunt quam!</div>
+														<div class="username">Guo Shun:</div>
+														<div class="text">My locust loves to play with it.</div>
 												</div>
 												<div class="review">
-														<div class="username">User 4:</div>
-														<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, molestias! Earum
-																quae
-																tenetur similique minima eveniet excepturi quam hic obcaecati aut voluptates. Labore recusandae
-																velit modi aperiam quia expedita cum!</div>
+														<div class="username">Rick Forster:</div>
+														<div class="text">This Cookies works outstandingly well. It beautifully improves my basketball by a lot.</div>
 												</div>
 												<div class="review">
-														<div class="username">User 5:</div>
-														<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dicta modi eius
-																excepturi nostrum eveniet doloribus placeat. Hic labore modi eos ipsum soluta obcaecati ea.
-														</div>
-												</div>
-												<div class="review">
-														<div class="username">User 6:</div>
-														<div class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet exercitationem
-																illo
-																modi, minima recusandae molestias repudiandae cupiditate aut magni omnis debitis aliquam
-																repellat
-																excepturi adipisci, non sequi sunt enim illum!</div>
+														<div class="username">PM_ME_COOKIE_PICTURES:</div>
+														<div class="text">nice cookie picture</div>
 												</div>
 											</div>
 
@@ -158,50 +139,30 @@
 											<div class="title">
 												Book
 												<br/>
-												<div class="subtitle">$1,999</div>
+												<div class="subtitle">$1,499</div>
 											</div>
 									</div>
 									<div style="margin-left: 1rem">
 										<h1>Reviews</h1>
 										<div id="reviews2">
 												<div class="review">
-														<div class="username">Anonymous:</div>
+														<div class="username">Mallory:</div>
 														<div class="text">Learned all my hacking from here</div>
 												</div>
 												<div class="review">
-														<div class="username">User 2:</div>
-														<div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, exercitationem
-																sunt? Aliquam dolorum suscipit doloremque sequi est quibusdam tempore aut ipsum similique, sed
-																aliquid nemo cumque error in atque dignissimos pariatur hic distinctio dolores. Blanditiis
-																debitis
-																nesciunt dolor sunt quia sit excepturi ducimus sapiente, aut atque earum repudiandae maiores?
-																Asperiores.</div>
+														<div class="username">Cohan Barron:</div>
+														<div class="text">This Hacking book works very well. It persistently improves my soccer by a lot.</div>
 												</div>
 												<div class="review">
-														<div class="username">User 3:</div>
-														<div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo amet error a harum
-																placeat ad et voluptatum unde nesciunt quam!</div>
+														<div class="username">Funny guy:</div>
+														<div class="text">
+                              What’s a hacker’s favorite season?
+                              Phishing season.
+                            </div>
 												</div>
 												<div class="review">
-														<div class="username">User 4:</div>
-														<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, molestias! Earum
-																quae
-																tenetur similique minima eveniet excepturi quam hic obcaecati aut voluptates. Labore recusandae
-																velit modi aperiam quia expedita cum!</div>
-												</div>
-												<div class="review">
-														<div class="username">User 5:</div>
-														<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dicta modi eius
-																excepturi nostrum eveniet doloribus placeat. Hic labore modi eos ipsum soluta obcaecati ea.
-														</div>
-												</div>
-												<div class="review">
-														<div class="username">User 6:</div>
-														<div class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet exercitationem
-																illo
-																modi, minima recusandae molestias repudiandae cupiditate aut magni omnis debitis aliquam
-																repellat
-																excepturi adipisci, non sequi sunt enim illum!</div>
+														<div class="username">Tobias Leonard:</div>
+														<div class="text">My demon loves to play with it.</div>
 												</div>
 										</div>
 
@@ -214,13 +175,12 @@
 						</div>
 					</div>
           <div v-if="sub_selected === 3">
-						
 						<div class="reviews-container">
 								<div style="display: flex">
 									<div class="product-container">
-											<img src="../assets/hacking-book.jpg" />
+											<img src="../assets/yubikey.jpg" />
 											<div class="title">
-												Book
+												YubiKey
 												<br/>
 												<div class="subtitle">$1,999</div>
 											</div>
@@ -231,46 +191,22 @@
 
 											<div id="reviews3">
 													<div class="review">
-															<div class="username">Anonymous:</div>
-															<div class="text">Learned all my hacking from here</div>
+															<div class="username">Guy:</div>
+															<div class="text">Bad. Can't copy my files on to it</div>
 													</div>
 													<div class="review">
-															<div class="username">User 2:</div>
-															<div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Deserunt, exercitationem
-																	sunt? Aliquam dolorum suscipit doloremque sequi est quibusdam tempore aut ipsum similique, sed
-																	aliquid nemo cumque error in atque dignissimos pariatur hic distinctio dolores. Blanditiis
-																	debitis
-																	nesciunt dolor sunt quia sit excepturi ducimus sapiente, aut atque earum repudiandae maiores?
-																	Asperiores.</div>
+															<div class="username">Xiao Ming:</div>
+															<div class="text">Fake</div>
 													</div>
 													<div class="review">
-															<div class="username">User 3:</div>
-															<div class="text">Lorem ipsum, dolor sit amet consectetur adipisicing elit. Quo amet error a harum
-																	placeat ad et voluptatum unde nesciunt quam!</div>
+															<div class="username">Orla Pollard</div>
+															<div class="text">one of my hobbies is programming. and when i'm programming this works great.</div>
 													</div>
 													<div class="review">
-															<div class="username">User 4:</div>
-															<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Quasi, molestias! Earum
-																	quae
-																	tenetur similique minima eveniet excepturi quam hic obcaecati aut voluptates. Labore recusandae
-																	velit modi aperiam quia expedita cum!</div>
-													</div>
-													<div class="review">
-															<div class="username">User 5:</div>
-															<div class="text">Lorem ipsum dolor sit amet consectetur adipisicing elit. Esse dicta modi eius
-																	excepturi nostrum eveniet doloribus placeat. Hic labore modi eos ipsum soluta obcaecati ea.
-															</div>
-													</div>
-													<div class="review">
-															<div class="username">User 6:</div>
-															<div class="text">Lorem ipsum dolor sit amet consectetur, adipisicing elit. Eveniet exercitationem
-																	illo
-																	modi, minima recusandae molestias repudiandae cupiditate aut magni omnis debitis aliquam
-																	repellat
-																	excepturi adipisci, non sequi sunt enim illum!</div>
+															<div class="username">Alice:</div>
+															<div class="text">this YubiKey is tasty.div>
 													</div>
 											</div>
-
 
 											<div class="submit-container">
 													<textarea id="input3"></textarea><br>
@@ -551,7 +487,7 @@ let a = {
 				}
 				vm.completed_auth_tasks.push(b);
 			}
-			if (this.auth_points + this.xss_points == 5000) {
+			if ((this.auth_points + this.xss_points) === 5000) {
 				this.main_page = 3;
 			} else {
 				if (b <= 2) {
