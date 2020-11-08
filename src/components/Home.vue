@@ -458,7 +458,7 @@ let a = {
 	},
 	methods: {
 		search: function() {
-			const itemName = $('#item_name').val();
+			const itemName = $('#item_name').val() || "";
             const searchUrl = `${productUrl}?name=${itemName}`
             fetch(searchUrl, {
                 method: 'get',
