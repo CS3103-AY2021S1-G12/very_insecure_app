@@ -158,26 +158,53 @@
 			</template>
 		  </div>
           <div class="hint-container">
-            <button @click="toggleHint()">Toggle hint</button>
-            <template v-if="hint === 1 && selected === 1">
-                <div class="hint">
-                    How about leaving a review before you proceed?
-                </div>
+            <template v-if="selected === 1 && sub_selected === 1">
+                <button @click="toggleHint(0)">Toggle hint</button>
+                <template v-if="hint[0] === true">
+                    <div class="hint">
+                        How about leaving a review before you proceed?
+                    </div>
+                </template>
             </template>
-            <template v-if="hint === 1 && selected === 2 && sub_selected === 1">
-                <div class="hint">
-                    On many websites, login sessions are stored as web cookies.
-                </div>
+            <template v-if="selected === 1 && sub_selected === 2">
+                <button @click="toggleHint(1)">Toggle hint</button>
+                <template v-if="hint[1]">
+                    <div class="hint">
+                        How about leaving a review before you proceed?
+                    </div>
+                </template>
             </template>
-            <template v-if="hint === 1 && selected === 2 && sub_selected === 2">
-                <div class="hint">
-                    It was recently leaked that the website uses PostgreSQL to store their user information.
-                </div>
+            <template v-if="selected === 1 && sub_selected === 3">
+                <button @click="toggleHint(2)">Toggle hint</button>
+                <template v-if="hint[2]">
+                    <div class="hint">
+                        How about leaving a review before you proceed?
+                    </div>
+                </template>
             </template>
-            <template v-if="hint === 1 && selected === 2 && sub_selected === 3">
-                <div class="hint">
-                    The promo code must be stored in their database somewhere!
-                </div>
+            <template v-if="selected === 2 && sub_selected === 1">
+                <button @click="toggleHint(3)">Toggle hint</button>
+                <template v-if="hint[3]">
+                    <div class="hint">
+                        On many websites, login sessions are stored as web cookies.
+                    </div>
+                </template>
+            </template>
+            <template v-if="selected === 2 && sub_selected === 2">
+                <button @click="toggleHint(4)">Toggle hint</button>
+                <template v-if="hint[4]">
+                    <div class="hint">
+                        It was recently leaked that the website uses PostgreSQL to store their user information.
+                    </div>
+                </template>
+            </template>
+            <template v-if="selected === 2 && sub_selected === 3">
+                <button @click="toggleHint(5)">Toggle hint</button>
+                <template v-if="hint[5]">
+                    <div class="hint">
+                        The promo code must be stored in their database somewhere!
+                    </div>
+                </template>
             </template>
           </div>
         </div>
@@ -432,7 +459,7 @@ let a = {
     return {
       selected: 2,
       sub_selected: 1,
-      hint: 0,
+      hint: [false, false, false, false ,false, false],
       main_page: 1,
       showAlert: false,
 			xss_points: 0,
@@ -456,8 +483,9 @@ let a = {
 		}
 	},
 	methods: {
-        toggleHint: function() {
-            this.hint = (this.hint % 2) + 1;
+        toggleHint: function(i) {
+            this.hint[i] = !this.hint[i];
+            this.hint = this.hint.slice();
         },
 		search: function() {
 			const itemName = $('#item_name').val() || "";
