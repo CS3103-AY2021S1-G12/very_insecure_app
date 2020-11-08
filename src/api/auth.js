@@ -85,7 +85,7 @@ router.get('/products', (req, res) => {
   if (!filter) {
     query = "SELECT * FROM products;"
   } else {
-    query = `SELECT * FROM products WHERE item_name = '${filter}';`;
+    query = `SELECT * FROM products WHERE item_name ILIKE '%${filter}%';`;
   }
 
   pool.query(query)
