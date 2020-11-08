@@ -2,7 +2,7 @@
   <div class="home">
     <div class="navbar">
       <div class="logo">
-        CHEW SHIFU'S
+        A DUMMY'S
         <div class="sub">GUIDE TO CYBERSECURITY EXCELLENCE</div>
       </div>
       <div class="navx">
@@ -16,9 +16,56 @@
     <div class="main" v-if="main_page == 1">
       <div class="landing">
         <img src="https://kit8.net/images/detailed/3/Guy_and_computer.png"/>
-        <div class="title">Welcome to Chew Shifu's<sup>TM</sup> Guide</div>
+        <div class="title">Welcome to A Dummy's Guide to Cybersecurity Excellence</div>
         <div class="sub-title">This guide is free to use - do whatever you'd like (go ham).</div>
-        <div class="button" @click="main_page = 2">Let's get started</div>
+        <div class="button" @click="main_page = 4">Let's get started</div>
+      </div>
+    </div>
+    <div class="main" v-if="main_page == 4">
+      <div class="landing" style="text-align:left">
+        <div class="title">What is Cross Site Scripting?</div>
+        <div class="sub-title">
+			Cross Site Scripting (also known as XSS) is a client-side web vulnerability that allows malicious users to compromise the interactions that users have with a vulnerable application. This is typically achieved by executing malicious Javascript code within victim browsers. The malicious Javascript code can be injected via HTML elements exposed on the web application.
+			<br/><br/>
+			<strong>What are several types of XSS?</strong><br/>
+			(a) Reflected XSS => When data from HTTP request is automatically rendered on the application
+			<br/>
+			(b) Stored XSS => When data is stored in a database and rendered across various different browsers persistently (eg. in a forum post)
+			<br/>
+			(c) DOM XSS => when an application contains some client-side JavaScript that processes data from an untrusted source in an unsafe way, usually by writing the data back to the DOM.
+			<br/><br/>
+			<strong>What are the potential consequences of XSS?</strong><br/>
+			(a) Impersonation as other users (particularly those of higher privilege like admins)<br/>
+			(b) Inject malware via malicious links that are automatically rendered (eg. via HTML (iframe) tags)
+			<br/><br/>
+			<strong>How do we prevent XSS? Some ways to prevent XSS include:</strong><br/>
+			- Sanitizing all user input to ensure that input received is of expected behaviour. This could mean sanitizing HTML tags or using regex patterns.
+			<br/>- Using appropriate response headers in HTTP requests to ensure that browsers interpret response
+		</div>
+        <div class="button" @click="main_page = 5">Learn More About Injection Vulnerabilities</div>
+      </div>
+    </div>
+    <div class="main" v-if="main_page == 5">
+      <div class="landing" style="text-align:left">
+        <div class="title">What are Injection Vulnerabilities?</div>
+        <div class="sub-title">
+			Cross Site Scripting (also known as XSS) is a client-side web vulnerability that allows malicious users to compromise the interactions that users have with a vulnerable application. This is typically achieved by executing malicious Javascript code within victim browsers. The malicious Javascript code can be injected via HTML elements exposed on the web application.
+			<br/><br/>
+			Attackers can perform an injection attack in a web application by sending untrusted data to a code interpreter through a form input or some other mode of data submission. In these levels, we have focused on Cookie Hijacking and SQL Injection related vulnerabilities.
+			<br/><br/>
+			<strong>More on SQL Injection</strong><br/>
+			- SQL Injections are a vulnerability that allows a malicious user to manipulate the SQL queries being sent to the database. 
+			<br/>- If an attacker can manipulate these queries, the attacker can run SELECT(), UPDATE() and DELETE() commands on the database which will manipulate data.
+			<br/><br/>
+			<strong>How to Protect Cookies?</strong><br/>
+			- Frequent change of SESSION ID so that cookies do not live forever
+			<br/>- Usage of certain attributes that ensure the cookie comes from the right place (eg. ip address)
+			- Not embed sensitive logic as attributes within a cookie
+			<br/><br/>
+			<strong>How to Prevent SQL Injections?</strong><br/>
+			- Most SQL injections can be prevented by using parameterized queries instead of concatenating user input into the query
+		</div>
+        <div class="button" @click="main_page = 2">Let's get hacking</div>
       </div>
     </div>
     <div class="main" v-if="main_page == 3">
@@ -68,10 +115,62 @@
             </div>
             <div class="bar" v-if="selected == 2">
 							<template v-for="i in [1,2,3]">
-	              <div class="indiv-bar" :key="'auth' + i" @click="sub_selected = i; reset()" v-bind:class="{filled: completed_auth_tasks.includes(i)}"></div>
+	              <div class="indiv-bar" :key="'auth' + i" @click="sub_selected = i; search(); reset()" v-bind:class="{filled: completed_auth_tasks.includes(i)}"></div>
 							</template>
             </div>
           </div>
+		  <div class="writeup-text" style="margin-top:20px">
+			<template v-if="selected === 1">
+				You have become somewhat of a celebrity among your computer club friends for your recent exploits.
+				<br/><br/>
+				Now one of them is challenging your status as a master hacker by asking you to exploit the website's newest feature, a review system for its products.
+				<br/><br/>
+				The website is in some trouble as most people have reacted poorly to this new feature. Mostly because it allows you to leave reviews on products that you have not even bought before using arbitrary usernames.
+				<br/><br/>
+				Nonetheless, you were challenged by your friend trigger a Javascript alert() call without the use of the console.
+				<br/><br/>
+				Hint:
+				<br/>
+				How about leaving a review before you proceed?
+			</template>
+			<template v-if="selected === 2 && sub_selected == 1">
+				Oh my! Those cookies are way more expensive than you thought they would be!
+				<br/><br/>
+				Fortunately, there seems to be an ongoing promotion for admin users. You heard that it gives 50% off any purchase made!
+				<br/><br/>
+				Unfortunately, you are not registered as an admin user.
+				<br/><br/>
+				The website has however, made it very convenient for its admin users to participate in the promotion. All they have have to do is log in with their admin accounts, press the "Get Promo" button before they checkout their cart and voila!
+				<br/><br/>
+				Now, if only there is a way to get around this...
+				<br/><br/>
+				Hint:
+				<br/>
+				On many websites, login sessions are stored as web cookies.
+			</template>
+			<template v-if="selected === 2 && sub_selected == 2">
+				After savoring those delicious cookies at 50% off, you now crave more of those juicy admin privileges.
+				<br/><br/>
+				If only there was a way for you to obtain an admin account, or at least, trick the website into thinking that you have an admin account...
+				<br/><br/>
+				Just think of all the delightful things you can buy with those year round admin promos!
+				<br/><br/>
+				Hint:
+				<br/>
+				It was recently leaked that the website uses PostgreSQL to store their user information.
+			</template>
+			<template v-if="selected === 2 && sub_selected == 3">
+				It appears that the website has come up with a brand new marketing ploy where exclusive promo codes are given to users to receive a 80% discount on their purchases.
+				<br/><br/>
+				Feeling excited by your recent successes, you revel in the thought of being able to exploit the website once again.
+				<br/><br/>
+				Are you really still doing it for the discounts?
+				<br/><br/>
+				Hint:
+				<br/>
+				The promo code must be stored in their database somewhere!
+			</template>
+		  </div>
         </div>
         <div class="content" v-if="selected === 1">
 					<div class="profile-container">
@@ -271,35 +370,25 @@
 							<div>
 								<div @click="login()" class="def-button">Log In</div>
 							</div>
-							<div class="subtitle" style="font-weight:normal; text-transform: none; padding: 20px; background-color: #F4F7F8; color: #444">
-								Guests can log in with the username `guest` and password `guest`.
-							</div>
 
 						</form>
 
 					</div>
           <div v-if="sub_selected === 3">
-						<div class="topnav">
-								<a class="active" href="#home">Products</a>
-								<a href="#news">News</a>
-								<a href="#contact">Contact</a>
-								<a href="#about">About</a>
-						</div>
-
 						<form class="search-bar" id="search-bar" method="GET" action="/">
 								<div style="display: flex;">
 										<input name="item_name" class="special" type="text" id="item_name" style="margin: 0" />
 										<div @click="search()" class="def-button" style="max-width: 120px; margin-left: 1rem; display: flex; justify-content: center; align-items: center;">Search</div>
 								</div>
+
+							<div style="margin-top: 40px; display: flex;">
+								<input id="promo_code_3" placeholder="Promo Code" type="text" style="margin: 0; width: 200px;" />
+								<div @click="applypromo()" class="def-button" style="max-width: 150px; margin-left: 1rem; display: flex; justify-content: center; align-items: center;">Apply Promo</div>
+							</div>
 							<div id="list" style="margin-top: 40px; padding: 0px;">
 									<ul id="search-results" style="list-style-type:none;">
 										
 									</ul>
-							</div>
-
-							<div style="display: flex;">
-								<input id="promo_code_3" placeholder="Promo Code" type="text" style="margin: 0; width: 200px;" />
-								<div @click="applypromo()" class="def-button" style="max-width: 150px; margin-left: 1rem; display: flex; justify-content: center; align-items: center;">Apply Promo</div>
 							</div>
 						</form>
 
@@ -369,7 +458,7 @@ let a = {
 	},
 	methods: {
 		search: function() {
-			const itemName = $('#item_name').val();
+			const itemName = $('#item_name').val() || "";
             const searchUrl = `${productUrl}?name=${itemName}`
             fetch(searchUrl, {
                 method: 'get',
@@ -492,6 +581,7 @@ let a = {
 				this.main_page = 3;
 			} else {
 				if (b <= 2) {
+					this.search();
 					this.sub_selected = b+1;
 					this.reset();
 				} else {
@@ -882,6 +972,9 @@ hr {
   text-transform: uppercase;
   font-size: 0.7rem;
   letter-spacing: 1px;
+}
+.writeup-text {
+  font-size: 0.9rem;
 }
 .progress-bar {
   padding: 20px;
