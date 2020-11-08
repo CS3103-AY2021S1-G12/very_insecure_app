@@ -476,7 +476,7 @@ let a = {
             $("#username-field").text(username || "Guest");
 		},
 		updatex: function (a, b) {
-	    var vm = this;
+	    	var vm = this;
 			if (a == 'xss') {
 				if (!vm.completed_xss_tasks.includes(b)) {
 					vm.xss_points += [500, 900, 1100][b-1];

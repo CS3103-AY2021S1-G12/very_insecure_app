@@ -4,7 +4,7 @@
   "description": "A deliberately insecure web application to train in XSS and SQLi vulnerabilities.",
   "main": "server.js",
   "scripts": {
-    "build": "vue-cli-service build && javascript-obfuscator dist/js/app.*.js --output dist/js --self-defending true",
+    "build": "vue-cli-service build && javascript-obfuscator dist/js/app.*.js --output dist/js --self-defending true --string-array-encoding base64",
     "start": "node server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "fe-serve": "vue-cli-service serve",
