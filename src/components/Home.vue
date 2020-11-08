@@ -131,7 +131,6 @@
 						</div>
           </div>
           <div v-if="sub_selected === 2">
-
 						<div class="reviews-container">
 								<div style="display: flex">
 									<div class="product-container">
@@ -156,9 +155,9 @@
 												<div class="review">
 														<div class="username">Funny guy:</div>
 														<div class="text">
-                              What’s a hacker’s favorite season?
-                              Phishing season.
-                            </div>
+															What’s a hacker’s favorite season?
+															Phishing season.
+														</div>
 												</div>
 												<div class="review">
 														<div class="username">Tobias Leonard:</div>
@@ -170,10 +169,10 @@
 												<textarea id="input2"></textarea><br>
 												<button id="submit2" class="def-button" @click="runSubmit(2)">Submit</button><br>
 										</div>
+									</div>
 								</div>
-							</div>
 						</div>
-					</div>
+		  </div>
           <div v-if="sub_selected === 3">
 						<div class="reviews-container">
 								<div style="display: flex">
@@ -204,7 +203,7 @@
 													</div>
 													<div class="review">
 															<div class="username">Alice:</div>
-															<div class="text">this YubiKey is tasty.div>
+															<div class="text">this YubiKey is tasty</div>
 													</div>
 											</div>
 
@@ -418,61 +417,61 @@ let a = {
 
 		},
 		runSubmit: function(i) {
+            window.alert = (msg) => {
+                if (fromConsole()) {
+                    originalAlert('Nice try! Don\'t use the console :)');
+                    return;
+                }
 
-			window.alert = (msg) => {
-					if (fromConsole()) {
-							originalAlert('Nice try! Don\'t use the console :)');
-							return;
-					}
-
-					// fetch(`${window.location.href}\x77\x69\x6e\x63\x6f\x6e\x64\x69\x74\x69\x6f\x6e`);
-					originalAlert(successText);
-					this.updatex('xss', i);
-      }
+                // fetch(`${window.location.href}\x77\x69\x6e\x63\x6f\x6e\x64\x69\x74\x69\x6f\x6e`);
+                originalAlert(successText);
+                this.updatex('xss', i);
+            }
       
-      if (i === 1) {
-        let username = $("#username-field").text();
-        let inputText = $('#input'+i).val();
-        
-        const review = $('<div/>', { class: "review" });
-			
-        $(`<div class="username">${username}</div>`).appendTo(review);
-    
-        $(`<div class="text">${inputText}</div>`).appendTo(review);
-    
-        $('#reviews' + i).append(review);
-          
-      } else if (i === 2) {
-				let username = $("#username-field").text();
-        let inputText = $('#input'+i).val();
-        inputText = inputText.replace(/<script>/gi, "").replace(/<\/script>/gi, "");
+            if (i === 1) {
+                let username = $("#username-field").text();
+                let inputText = $('#input'+i).val();
 
-        const review = $('<div/>', { class: "review" });
-    
-        $(`<div class="username">${username}</div>`).appendTo(review);
-    
-        $(`<div class="text">${inputText}</div>`).appendTo(review);
-    
-        $('#reviews2').append(review);
-			} else {
-        let username = $("#username-field").text();
-        let inputText = $('#input'+i).val();
-        
-        const review = $('<div/>', { class: "review" });
-			
-        $(`<div class="username">${username}</div>`).appendTo(review);
+                const review = $('<div/>', { class: "review" });
+                    
+                $(`<div class="username">${username}</div>`).appendTo(review);
 
-        $('<div/>', {
-            text: inputText,
-            class: "text"
-        }).appendTo(review);
-        
-        $('#reviews' + i).append(review);
+                $(`<div class="text">${inputText}</div>`).appendTo(review);
+
+                $('#reviews' + i).append(review);
+                
+            } else if (i === 2) {
+                let username = $("#username-field").text();
+                let inputText = $('#input'+i).val();
+                inputText = inputText.replace(/<script>/gi, "").replace(/<\/script>/gi, "");
+
+                const review = $('<div/>', { class: "review" });
+            
+                $(`<div class="username">${username}</div>`).appendTo(review);
+            
+                $(`<div class="text">${inputText}</div>`).appendTo(review);
+            
+                $('#reviews2').append(review);
+
+            } else {
+                let username = $("#username-field").text();
+                let inputText = $('#input'+i).val();
+                
+                const review = $('<div/>', { class: "review" });
+                    
+                $(`<div class="username">${username}</div>`).appendTo(review);
+
+                $('<div/>', {
+                    text: inputText,
+                    class: "text"
+                }).appendTo(review);
+                
+                $('#reviews' + i).append(review);
 			}
 		},
 		changeusername : function () {
-        let username = $("#username-input").val();
-        $("#username-field").text(username || "Guest");
+            let username = $("#username-input").val();
+            $("#username-field").text(username || "Guest");
 		},
 		updatex: function (a, b) {
 	    var vm = this;
