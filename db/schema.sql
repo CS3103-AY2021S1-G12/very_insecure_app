@@ -31,3 +31,9 @@ CREATE TABLE IF NOT EXISTS reviews(
     PRIMARY KEY (id),
     FOREIGN KEY (user_id) REFERENCES users(id)
 );
+
+-- READONLY DB USER TO SECURE DATABASE
+CREATE USER readonly_user WITH PASSWORD 'very_insecure_password';
+GRANT CONNECT ON DATABASE postgres TO readonly_user;
+GRANT USAGE ON SCHEMA public TO readonly_user;
+GRANT SELECT ON ALL TABLES IN SCHEMA public TO readonly_user;

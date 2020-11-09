@@ -8,7 +8,7 @@ COPY package-lock.json .
 RUN npm ci
 
 COPY ./src ./src
-COPY server.js .
+COPY server.mjs .
 
 RUN npm run build
 ENTRYPOINT [ "npm", "run", "start" ]

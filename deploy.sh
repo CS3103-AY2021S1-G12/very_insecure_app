@@ -12,6 +12,8 @@ gcloud compute ssh very-insecure-app \
     --command 'rm -rf ~/app \
             && git clone https://github.com/CS3103-AY2021S1-G12/very_insecure_app.git ~/app \
             && cd ~/app \
+            && docker-compose rm --force --stop && sleep 1 \
+            && docker volume rm app-db || true \
             && docker volume create --name=app-db || true \
             && docker-compose up --build -d'
 

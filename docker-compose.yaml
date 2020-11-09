@@ -5,9 +5,10 @@ services:
     build:
       context: .
     environment:
-      - PGUSER=postgres
+      - PGUSER=readonly_user
+      - PGDATABASE=postgres
       - PGHOST=db
-      - PGPASSWORD=insecure_password
+      - PGPASSWORD=very_insecure_password
       - PGPORT=5432
     ports:
       - 80:3000

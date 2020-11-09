@@ -1,24 +1,39 @@
-const express = require('express');
-const serveStatic = require('serve-static');
-const cookieParser = require('cookie-parser');
-
-const { Pool } = require('pg');
-const cors = require('cors');
-const path = require('path');
+import express from 'express';
+import serveStatic  from 'serve-static';
+import cookieParser from 'cookie-parser';
+import cors from 'cors';
+import path from 'path';
+import pg from 'pg';
+import { fileURLToPath } from 'url';
+const { Pool } = pg;
 
 const pool = new Pool();
-pool.query('SELECT 1;', (err, _) => {
-    if (err) {
-        console.log({ err })
-    } else {
+const maxAttempts = 10;
+let dbError;
+for (let attempts = 1; attempts <= maxAttempts; attempts++) {
+    try {
+        await pool.query('SELECT 1;');
         console.log('db connection ok');
+        pool.end();
+        dbError = null;
+        break;
+    } catch (err) {
+        dbError = err;
+        console.log(`failed to connect to db, retrying in ${1000 * attempts} ms`);
     }
-    pool.end();
-});
+
+    await new Promise(resolve => setTimeout(resolve, 1000 * attempts));
+}
+
+if (dbError) {
+    console.warn({ dbError });
+    process.exit(1);
+}
 
 const app = express();
 const port = 3000;
-const staticDir = path.resolve(__dirname, 'dist');
+const dirname = path.dirname(fileURLToPath(import.meta.url));
+const staticDir = path.resolve(dirname, 'dist');
 const index = path.resolve(staticDir, 'index.html');
 app.use(cors());
 app.use(cookieParser())
@@ -34,7 +49,7 @@ app.get('*', (req, res, next) => {
 const staticRouter = serveStatic(staticDir);
 app.use('/', staticRouter);
 
-const authBypassRouter = require('./src/api/auth');
+const { default: authBypassRouter } = await import('./src/api/auth.js');
 app.use(authBypassRouter);
 
 

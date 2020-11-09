@@ -25,16 +25,18 @@ The live-hosted application can be found [here](http://very-secure-app.duckdns.o
 
     1. Run a PostgreSQL database locally.
 
-    2. Run `npm i` to install dependencies if it is the first time running the project.
+    2. Apply the SQL in `db/schema.sql` to the Postgres database. The application will connect to the default `postgres` database.
 
-    3. Run `npm run build`.
+    3. Run `npm i` to install dependencies if it is the first time running the project.
 
-    4. Run the following command to start the server.
+    4. Run `npm run build`.
+
+    5. Run the following command to start the server.
 
     ```bash
-        PGUSER=<YOUR_POSTGRES_USER> \
+        PGUSER=readonly_user \
         PGHOST=localhost \
-        PGPASSWORD=<YOUR_POSTGRES_PASSWORD> \
-        PGDATABASE=<YOUR_POSTGRES_DB> \
+        PGPASSWORD=very_insecure_password \
+        PGDATABASE=postgres \
         PGPORT=<YOUR_POSTGRES_PORT> npm run start
     ```
