@@ -13,6 +13,8 @@ This is a deliberately vulnerable web application, created with the intention of
 
 The live-hosted application can be found [here](http://very-secure-app.duckdns.org/)
 
+DISCLAIMER: Duck DNS may not accessible from within the NUS network
+
 ## Quickstart
 
 * If using Docker (recommended):
