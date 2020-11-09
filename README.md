@@ -35,10 +35,12 @@ DISCLAIMER: Duck DNS may not accessible from within the NUS network
 
     5. Run the following command to start the server.
 
-    ```bash
-        PGUSER=readonly_user \
-        PGHOST=localhost \
-        PGPASSWORD=very_insecure_password \
-        PGDATABASE=postgres \
-        PGPORT=<YOUR_POSTGRES_PORT> npm run start
-    ```
+        ```bash
+            PGUSER=readonly_user \
+            PGHOST=localhost \
+            PGPASSWORD=very_insecure_password \
+            PGDATABASE=postgres \
+            PGPORT=<YOUR_POSTGRES_PORT> npm run start
+        ```
+
+    6. Access the website at `localhost:3000`
